@@ -145,6 +145,7 @@
         let uniqueTags = createFilterTags(data.entries);
         generatefilterTemplate(uniqueTags);
         filterDataOnChange();
+        darkThemeToggle();
       })
       .fail(function(jqxhr, textStatus, error) {
         var err = textStatus + ", " + error;
