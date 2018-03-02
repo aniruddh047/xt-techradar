@@ -2,7 +2,6 @@ const gulp = require("gulp");
 const uglify = require("gulp-uglify");
 const babel = require("gulp-babel");
 var jsonConcat = require('gulp-json-concat');
-var file = require('gulp-file');
 
 gulp.task("scripts", () => {
   gulp
@@ -22,22 +21,13 @@ gulp.task("copy", () => {
   gulp.src("app/assets/**/*").pipe(gulp.dest("dist/assets"));
 });
 
-// gulp.task('split-json', function() {
-//   var str = primus.library();
-//   return gulp.src('data/radar-data.json')
-//     .pipe(file('primus.js', str))
-//     .pipe(gulp.dest('datacopy1'));
-// });
-
 // concat JSON files
-gulp.task('merge-json',  () => {
-   gulp.src('contribute/*.json')
-    .pipe(jsonConcat('radar-data-copy2.json', function (data) {
-      // console.log(data);
-      // console.log(JSON.stringify(entries));
+gulp.task('merge-json', () => {
+  gulp.src('contribute/*.json')
+    .pipe(jsonConcat('radar-data.json', function (data) {
       var finalObj = {};
       finalObj.entries = Object.values(data);
-      return new Buffer(JSON.stringify(finalObj));
+      return new Buffer(JSON.stringify(finalObj, null, '\t'));
     }))
     .pipe(gulp.dest('datacopy/'));
 });
@@ -46,4 +36,4 @@ gulp.task("copy-data", () => {
   gulp.src("data/*.json").pipe(gulp.dest("functions/data"));
 });
 
-gulp.task("default", ["scripts", "copy", "merge-json", "copy-data"], () => {});
+gulp.task("default", ["scripts", "copy", "copy-data"], () => {});
