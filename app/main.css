@@ -14,10 +14,9 @@ body{
         position: relative;
     }
     header{
-        background: url('assets/xt_logo.png') no-repeat;
         height: 65px;
         width: 100%;
-        background-position-x: 19px;
+        padding: 0 15px;
     }
 ul{
     margin:0;
@@ -26,12 +25,16 @@ ul{
 .title{
     font-size: 25px;
     letter-spacing: 0.1em;
-    padding: 15px 20px;
+    vertical-align: top;
+    padding-top: 20px;
     margin: 0;
     font-weight: normal;
     text-align: center;
     color: #3279b3;
-    line-height: 1.5
+    line-height: 1.5;
+    width: 76vw;
+    margin: auto;
+    display: inline-block;
 }
 .ring {
     float: left;
@@ -202,7 +205,8 @@ footer{
     top: 13%;
     height: 86%;
     width: 75px;
-    animation: sweep 6s linear infinite;
+    animation: sweep 3s linear 2s;
+    opacity: 0;
 }
 
 .gradient {
@@ -218,17 +222,11 @@ footer{
 @keyframes sweep {
     0% {
         opacity: 1;
-        transform: rotate(0deg)
-    }
-    50% {
-        opacity: 1;
-        transform: rotate(360deg);
-    }
-    51% {
-        opacity: 0;
+        transform: rotate(0deg);
     }
     100% {
-        opacity: 0;
+        opacity: 1;
+        transform: rotate(360deg);
     }
 }
 
@@ -238,14 +236,14 @@ footer{
 }
 .dark-theme-toggle {
     cursor: pointer;
-    position: relative;
-    left: 86vw;
     background: #2f87db;
     border-radius: 10px;
     padding: 10px;
     color: white;
     border: white;
     outline: none;
+    vertical-align: top;
+    margin-top: 20px;
 }
 
 #snackbar {
